@@ -6,7 +6,7 @@ use Log1x\AcfComposer\Providers\AcfComposerServiceProvider as AcfComposerService
 use Broskees\AcfSeparateConcerns\Console\{BlockMakeCommand, OptionsMakeCommand, PartialMakeCommand, WidgetMakeCommand, FieldMakeCommand, StubPublishCommand};
 use Broskees\AcfSeparateConcerns\AcfComposer;
 
-class AcfComposerServiceProvider extends ServiceProvider
+class AcfComposerServiceProvider extends AcfComposerServiceProviderBase
 {
     /**
      * Register any application services.
