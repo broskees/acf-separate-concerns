@@ -15,6 +15,10 @@ class StubPublishCommand extends StubPublishCommandBase
                 : ''
         );
 
+        if (empty($acf_path)) {
+            return parent::handle();
+        }
+
         $stubsPath = $acf_path.DIRECTORY_SEPARATOR.'stubs';
 
         if (! is_dir($stubsPath)) {
