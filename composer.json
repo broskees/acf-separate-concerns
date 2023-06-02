@@ -1,0 +1,28 @@
+{
+  "name": "broskees/acf-separate-concerns",
+  "type": "package",
+  "description": "Separates ACF from the theme and into it's own directory. Requires acf-composer to be installed.",
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Joseph Roberts",
+      "email": "joe@digitaldyve.com"
+    }
+  ],
+  "autoload": {
+    "psr-4": {
+      "Broskees\\AcfSeparateConcerns\\": "src/"
+    }
+  },
+  "require": {
+    "php": "^8.0",
+    "log1x/acf-composer": "^2.1"
+  },
+  "extra": {
+    "acorn": {
+      "providers": [
+        "Broskees\\AcfSeparateConcerns\\Providers\\AcfComposerServiceProvider"
+      ]
+    }
+  }
+}
