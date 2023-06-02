@@ -1,31 +1,46 @@
-# Acorn Example Package
-
-This repo can be used to scaffold an Acorn package. See the [Acorn Package Development](https://roots.io/acorn/docs/package-development/) docs for further information.
+# ACF — Separate Concerns
 
 ## Installation
 
 You can install this package with Composer:
 
 ```bash
-composer require vendor-name/example-package
+composer require broskees/acf-separate-concerns
 ```
 
 You can publish the config file with:
 
 ```shell
-$ wp acorn vendor:publish --provider="VendorName\ExamplePackage\Providers\ExampleServiceProvider"
+$ wp acorn vendor:publish --provider="Broskees\AcfSeparateConcerns\Providers\AcfComposerServiceProvider"
 ```
 
 ## Usage
 
-From a Blade template:
+This package is just a wrapper for ACF Composer to relocate ACF fields without changing the `ACORN_BASEPATH` constant.
 
-```blade
-@include('Example::example')
-```
+This package is used identically, just reference [ACF Composer's Docs](https://github.com/log1x/acf-composer).
 
-From WP-CLI:
+By default fields will be placed in the `${WP_CONTENT_DIR}/acf` directory. But this directory and be changed with the `acf_composer_path` filter.
 
-```shell
-$ wp acorn example
+### Example
+
+```php
+<?php
+/**
+ * Plugin Name:  Relocate ACF Fields
+ * Plugin URI:   https://digitaldyve.com/
+ * Description:  Relocates ACF Fields outside of the theme
+ * Version:      1.0.0
+ * Author:       Digital Dyve
+ * Author URI:   https://digitaldyve.com/
+ * License:      MIT
+ */
+
+add_filter('acf_composer_path', function ($path) {
+    if (!defined('WP_CONTENT_DIR')) {
+        return $path;
+    }
+
+    return WP_CONTENT_DIR.DIRECTORY_SEPARATOR.'my-own-directory-name-here';
+});
 ```
